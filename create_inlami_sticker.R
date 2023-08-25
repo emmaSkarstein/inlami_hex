@@ -18,6 +18,7 @@ col_salami <- "#CC4D40"
 col_dark_salami <- "#9C4944"
 col_spots <- "#FCF5E0"
 col_backgr <- "#F2F2F2"
+col_bite <- col_backgr
 
 set.seed(4)
 
@@ -40,15 +41,25 @@ p <- ggplot() +
              color = col_spots) +
   scale_size_continuous(range = c(0.5, 2)) +
   # Bite circle
-  geom_circle(aes(x0 = -0.7, y0 = 1, r = 0.8),
+  geom_circle(aes(x0 = -0.9, y0 = 1.2, r = 0.8),
               fill = col_backgr, color = col_backgr) +
+  geom_circle(aes(x0 = -0.85, y0 = 0.45, r = 0.25),
+              fill = col_bite, color = col_bite) +
+  geom_circle(aes(x0 = -0.5, y0 = 0.48, r = 0.25),
+              fill = col_bite, color = col_bite) +
+  geom_circle(aes(x0 = -0.2, y0 = 0.65, r = 0.25),
+              fill = col_bite, color = col_bite) +
+  geom_circle(aes(x0 = 0, y0 = 0.99, r = 0.25),
+              fill = col_bite, color = col_bite) +
   # Package title
-  geom_text(aes(x = -0.45, y = 0.60), angle = 35, size = 5,
+  geom_text(aes(x = -0.45, y = 0.75), angle = 30, size = 5,
             label = "inlami", family = "courier") +
+  # Other stuff
   coord_equal(xlim = c(-1.1, 1.1), ylim = c(-1.1, 1.1)) +
   theme_void() +
   theme_transparent() +
   theme(legend.position = "none")
+p
 
 sticker(p,
         package="",
